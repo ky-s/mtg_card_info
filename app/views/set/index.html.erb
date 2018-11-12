@@ -1,0 +1,8 @@
+<h1>MTG sets</h1>
+<% @sets_by_types.keys.each do |type| %>
+  <%= link_to type, "##{type}" %>/
+<% end %>
+
+<% @sets_by_types.each do |type, sets| %>
+  <%= render partial: "set", locals: { type: type, sets: sets } %>
+<% end %>

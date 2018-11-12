@@ -1,0 +1,21 @@
+<h3 id="<%= type %>"><%= type %></h3>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th style="width: 20%">セット名</th>
+      <th style="width: 10%">コード</th>
+      <th style="width: 20%">発売日</th>
+      <th style="width: 30%">ブースター</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% sets.each do |set| %>
+      <tr>
+        <%= content_tag :td, set.name %>
+        <%= content_tag :td, set.code %>
+        <%= content_tag :td, set.release_date %>
+        <%= content_tag :td, (link_to 'ブースターパックを引く', booster_show_path(set: set.code), class: 'btn btn-sm btn-primary') %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

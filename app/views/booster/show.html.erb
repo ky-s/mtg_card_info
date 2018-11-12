@@ -1,0 +1,10 @@
+<h1><%= @set.name %></h1>
+
+<%= menu(@set) %>
+
+<% @cards.each do |card| %>
+  <%= link_to image_tag(card.img_url, class: 'p-2'), card.img_url, { data: { lightbox: "card", title: card.jp_name } } %>
+<% end %>
+
+<%= menu(@set) %>
+
