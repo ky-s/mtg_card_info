@@ -2,10 +2,11 @@
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
-      <th style="width: 20%">セット名</th>
-      <th style="width: 10%">コード</th>
+      <th style="width: 30%">セット名</th>
+      <th style="width: 5%">コード</th>
       <th style="width: 20%">発売日</th>
-      <th style="width: 30%">ブースター</th>
+      <th style="width: 35%">ブースター</th>
+      <th style="width: 10%"></th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +15,15 @@
         <%= content_tag :td, set.name %>
         <%= content_tag :td, set.code %>
         <%= content_tag :td, set.release_date %>
-        <%= content_tag :td, (link_to 'ブースターパックを引く', booster_show_path(set: set.code), class: 'btn btn-sm btn-primary') %>
+        <% if set.has_booster? %>
+          <%= content_tag :td do %>
+            <%= booster_including_info(set) %>
+          <% end %>
+          <%= content_tag :td, link_to('ブースターパックを引く', booster_show_path(set: set.code), class: 'btn btn-sm btn-success get_booster') %>
+        <% else %>
+          <%= content_tag :td %>
+          <%= content_tag :td %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

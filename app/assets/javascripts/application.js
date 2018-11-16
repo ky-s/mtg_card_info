@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require lightbox
+//= require jquery.jrumble.1.3.min
 //= require_tree .

@@ -1,0 +1,8 @@
+$('<%= selector %>').jrumble();
+$('<%= selector %>').each(function(i, element) {
+  $(element).hover(function() {
+    $(this).trigger('startRumble');
+  }, function() {
+    $(this).trigger('stopRumble');
+  });
+});

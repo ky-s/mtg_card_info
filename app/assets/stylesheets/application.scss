@@ -13,3 +13,22 @@
  */
 @import "bootstrap";
 @import "lightbox";
+
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+
+div#background{
+  height: auto;
+  min-height: 100%;
+  background-image: image-url("black_lotus.jpg");
+}
+
+div#content {
+  height: auto;
+  min-height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
