@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <div id='background'>
+    <div id='background_<%= (0..90).to_a.sample %>' class='background' >
       <div id='content'>
         <%= yield %>
       </div>
