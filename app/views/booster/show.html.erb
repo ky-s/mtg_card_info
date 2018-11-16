@@ -2,12 +2,24 @@
 <%= menu(@set) %>
 
 <% @cards.each do |card| %>
-  <%= link_to image_tag(card.img_url, class: 'p-2'), card.img_url, { data: { lightbox: "card", title: card.jp_name }, class: 'mtg_card' } %>
+  <%= link_to image_tag(card.img_url, class: 'p-2'), card.img_url, { data: { lightbox: "card", title: card.jp_name }, class: "mtg_card #{card.rarity.split.join}" } %>
 <% end %>
 
 <%= menu(@set) %>
 
 <script>
 <%= render partial: 'shared/rumblize.js', locals: { selector: '.mtg_card' } %>
-$('.mtg_card').trigger('startRumble');
+
+$('.MythicRare').jrumble({
+  x: 6,
+  y: 6,
+  rotation: 6,
+  speed: 5,
+  opacity: true,
+  opacityMin: .05
+});
+
+$('.MythicRare').trigger('startRumble');
+$('.Rare').trigger('startRumble');
+
 </script>
