@@ -23,6 +23,6 @@ class MtgSet < ApplicationRecord
   end
 
   def image_fetched?
-    File.exist?(Rails.root.join('card_images', code))
+    MtgCard.where(set: code).all? { |card| card.image.attached? }
   end
 end

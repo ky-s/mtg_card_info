@@ -33,18 +33,22 @@ namespace :mtg do
 
     task :fetch_image, ['set_code'] => :environment do |task, args|
       require 'open-uri'
-      path = Rails.root.join('card_images', args[:set_code])
-      FileUtils.mkdir_p(path)
 
       MtgCard.where(set: args[:set_code]).all.each do |mtg_card|
-        img_path = path.join(mtg_card.multiverse_id.to_s)
-        open(img_path, 'wb') do |out|
-          open(mtg_card.img_url) do |img|
-            out.write(img.read)
-          end
+        puts "loading #{mtg_card.jp_name}..."
+
+        open(mtg_card.img_url) do |file|
+          uploaded_file = ActionDispatch::Http::UploadedFile.new(
+            filename: mtg_card.multiverse_id.to_s,
+            type: 'image/jpeg',
+            tempfile: file
+          )
+          mtg_card.image.attach(uploaded_file)
         end
-        mtg_card.update(img_url: img_path)
+
+        puts "completed #{mtg_card.jp_name}..."
       end
+      puts 'done.'
     end
   end
 end
