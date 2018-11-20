@@ -1,0 +1,3 @@
+$('tr#<%= @set.code %> > td.fetch').html('<%= fetch(@set).html_safe %>');
+$('tr#<%= @set.code %> > td.fetch_image').html('<%= fetch_image(@set).html_safe %>');
+$.LoadingOverlay('hide');

@@ -1,8 +1,8 @@
 module BoosterHelper
   def menu(set)
-    content_tag :div do
-      concat link_to('もう一度引く', booster_show_path(set: set.code), class: 'btn btn-success')
-      concat link_to('セット一覧に戻る', set_index_path, class: 'btn btn-link')
+    content_tag :div, class: 'p-4' do
+      concat link_to('One More Chance', booster_show_path(set: set.code), class: 'btn btn-success m-2')
+      concat link_to('Return to Top', set_index_path, class: 'btn btn-secondary m-2')
     end
   end
 end

@@ -10,4 +10,8 @@ class MTG::Card
   def jp_name
     foreign_name('Japanese')&.name || name
   end
+
+  def title_label
+    "#{jp_name} (#{rarity})"
+  end
 end

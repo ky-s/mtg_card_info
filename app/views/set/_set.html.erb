@@ -2,24 +2,30 @@
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
-      <th style="width: 30%">セット名</th>
-      <th style="width: 10%">コード</th>
-      <th style="width: 20%">発売日</th>
-      <th style="width: 30%">ブースター</th>
+      <th style="width: 20%">Set Name</th>
+      <th style="width: 5%">Code</th>
+      <th style="width: 10%">Release Date</th>
+      <th style="width: 5%">Fetch</th>
+      <th style="width: 10%">Image Fetch</th>
+      <th style="width: 10%">Card List</th>
+      <th style="width: 30%">Booster</th>
       <th style="width: 10%"></th>
     </tr>
   </thead>
   <tbody>
     <% sets.each do |set| %>
-      <tr>
-        <%= content_tag :td, set.name %>
-        <%= content_tag :td, set.code %>
+      <tr id="<%= set.code %>">
+        <%= content_tag :td, simple_format(set.name) %>
+        <%= content_tag :td, simple_format(set.code, class: 'badge badge-info') %>
         <%= content_tag :td, set.release_date %>
+        <%= content_tag :td, fetch(set), class: 'fetch' %>
+        <%= content_tag :td, fetch_image(set), class: 'fetch_image' %>
+        <%= content_tag :td, link_to('Card List', set_show_path(set: set.code), class: 'btn btn-sm btn-primary') %>
         <% if set.has_booster? %>
           <%= content_tag :td do %>
             <%= booster_including_info(set) %>
           <% end %>
-          <%= content_tag :td, link_to('ブースターパックを引く', booster_show_path(set: set.code), class: 'btn btn-sm btn-success get_booster') %>
+          <%= content_tag :td, link_to('Get Booster Pack', booster_show_path(set: set.code), class: 'btn btn-sm btn-success get_booster') %>
         <% else %>
           <%= content_tag :td %>
           <%= content_tag :td %>

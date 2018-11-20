@@ -5,21 +5,23 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <% @sets_by_types.keys.take(12).each do |type| %>
+      <% @sets_by_types.keys.take(8).each do |type| %>
         <li class="nav-item active">
           <%= link_to type, "##{type}", class: 'nav-link mx-2' %>
         </li>
-    <% end %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn btn-sm btn-outline-secondary mx-2" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Others
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <% @sets_by_types.keys.drop(12).each do |type| %>
-              <%= link_to type, "##{type}", class: 'dropdown-item' %>
-            <% end %>
-          </div>
-        </li>
+      <% end %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-sm btn-outline-secondary mx-2" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Others
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <% @sets_by_types.keys.drop(8).each do |type| %>
+            <%= link_to type, "##{type}", class: 'dropdown-item' %>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item active bold"><%= link_to 'Fetch Set Data', set_fetch_path, class: 'nav-link mx-2 btn btn-danger' %></li>
+    </ul>
   </div>
 </nav>
 
@@ -28,6 +30,9 @@
 <% end %>
 
 <script>
-<%= render partial: 'shared/rumblize.js', locals: { selector: '.get_booster' } %>
+  <%= render partial: 'shared/rumblize.js', locals: { selector: '.get_booster' } %>
+  $('.fetch').on('click', function() {
+    $.LoadingOverlay('show');
+  });
 </script>
 

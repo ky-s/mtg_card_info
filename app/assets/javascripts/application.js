@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require lightbox
 //= require jquery.jrumble.1.3.min
+//= require loadingoverlay.min
 //= require_tree .

@@ -1,0 +1,12 @@
+<h1><%= @set.name %></h1>
+<div class="p-4">
+  <%= link_to('Return to Top', set_index_path, class: 'btn btn-secondary m-2') %>
+</div>
+
+<% @cards.each do |card| %>
+  <%= link_to image_tag(card.img_url, class: 'm-4'), card.img_url, { data: { lightbox: "card", title: card.title_label }, class: "mtg_card #{card.rarity.split.join}" } %>
+<% end %>
+
+<div class="p-4">
+  <%= link_to('Return to Top', set_index_path, class: 'btn btn-secondary m-2') %>
+</div>

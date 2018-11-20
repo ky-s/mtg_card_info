@@ -1,17 +1,13 @@
 class BoosterController < ApplicationController
-  before_action :fetch_set
-
-  def index
-    @cards = MTG::Set.generate_booster(params[:set])
-  end
+  before_action :load_set
 
   def show
-    @cards = MTG::Set.generate_booster(params[:set])
+    @cards = GenerateBooster.new(@set).generate
   end
 
   private
 
-  def fetch_set
-    @set = MTG::Set.find(params[:set])
+  def load_set
+    @set = MtgSet.find_by(code: params[:set])
   end
 end
