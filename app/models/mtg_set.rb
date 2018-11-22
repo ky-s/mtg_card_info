@@ -17,12 +17,4 @@ class MtgSet < ApplicationRecord
       h[Array(rarity).join(' or ')] = b.count(rarity)
     end
   end
-
-  def fetched?
-    MtgCard.where(set: code).present?
-  end
-
-  def image_fetched?
-    MtgCard.where(set: code).all? { |card| card.image.attached? }
-  end
 end

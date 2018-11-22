@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_115624) do
+ActiveRecord::Schema.define(version: 2018_11_20_143140) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 2018_11_20_115624) do
     t.string "rarity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "colors"
+    t.string "color_identity"
+    t.string "number"
+    t.string "artist"
   end
 
   create_table "mtg_sets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +59,8 @@ ActiveRecord::Schema.define(version: 2018_11_20_115624) do
     t.string "block"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "fetched", default: false, null: false
+    t.boolean "image_fetched", default: false, null: false
   end
 
 end

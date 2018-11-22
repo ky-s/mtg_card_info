@@ -1,0 +1,11 @@
+
+    setInterval(function() {
+      $.ajax({
+        url: '/set/fetch_cards_image_progress',
+        type: 'GET',
+        data: ('set='+ '<%= @set.code %>'),
+        processData: false,
+        contentType: false,
+        dataType: 'json'
+      })
+    }, 3000);

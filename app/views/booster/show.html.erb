@@ -1,11 +1,15 @@
-<h1><%= @set.name %></h1>
-<%= menu(@set) %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-around">
+  <%= link_to 'Magic:the Gathering', root_path, class: 'navbar-brand' %>
+  <span class="navbar-text"><%= content_tag :h3, @set.name %></span>
+  <ul class="navbar-nav">
+    <li class="nav-item active"><%= link_to('One More Chance', booster_show_path(set: @set.code), class: 'btn btn-sm btn-success m-2') %></li>
+    <li class="nav-item active"><%= link_to('Return to Top', set_index_path, class: 'btn btn-sm btn-secondary m-2') %></li>
+  </ul>
+</nav>
 
 <% @cards.each do |card| %>
   <%= link_to image_tag(card.img_url, class: 'm-4'), card.img_url, { data: { lightbox: "card", title: card.title_label }, class: "mtg_card #{card.rarity.split.join}" } %>
 <% end %>
-
-<%= menu(@set) %>
 
 <script>
   <%= render partial: 'shared/rumblize.js', locals: { selector: '.mtg_card' } %>

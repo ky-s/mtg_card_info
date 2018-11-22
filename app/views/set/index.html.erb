@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-around">
   <%= link_to 'Magic:the Gathering', '#', class: 'navbar-brand' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,11 @@
 
 <script>
   <%= render partial: 'shared/rumblize.js', locals: { selector: '.get_booster' } %>
-  $('.fetch').on('click', function() {
+  $('.fetch > a:enabled, .fetch_image > a:enabled').on('click', function() {
+    $(this).animate(
+      {height: "toggle", opacity: "toggle"},
+      "slow"
+    );
     $.LoadingOverlay('show');
   });
 </script>

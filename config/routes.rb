@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'beta_test/index'
   get 'booster/show'
   get 'set/index'
   get 'set/show'

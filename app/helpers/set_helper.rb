@@ -6,13 +6,13 @@ module SetHelper
   end
 
   def fetch(set)
-    return link_to('Fetched', set_fetch_cards_path(set: set.code), remote: true, class: %w(btn btn-sm btn-secondary disabled)) if set.fetched?
-    link_to('Fetch', set_fetch_cards_path(set: set.code), remote: true, class: %w(btn btn-sm btn-danger))
+    return link_to('Fetched', set_fetch_cards_path(set: set.code), remote: true, class: %w(btn btn-sm btn-secondary disabled m-2)) if set.fetched?
+    link_to('Fetch', set_fetch_cards_path(set: set.code), remote: true, class: %w(btn btn-sm btn-danger m-2))
   end
 
   def fetch_image(set)
-    return link_to('T.B.D.', set_fetch_cards_image_path(set: set.code), remote: true, class: %w(btn btn-sm btn-danger disabled)) # FIXME
-    return link_to('Fetched', set_fetch_cards_image_path(set: set.code), remote: true, class: %w(btn btn-sm btn-secondary disabled)) if set.image_fetched?
-    link_to('Fetch', set_fetch_cards_image_path(set: set.code), remote: true, class: %w(btn btn-sm btn-danger))
+    return link_to('Not feched', set_fetch_cards_image_path(set: set.code), remote: true, class: %w(btn btn-sm btn-danger disabled m-2)) unless set.fetched?
+    return link_to('Fetched', set_fetch_cards_image_path(set: set.code), remote: true, class: %w(btn btn-sm btn-secondary disabled m-2)) if set.image_fetched?
+    link_to('Fetch', set_fetch_cards_image_path(set: set.code), remote: true, class: %w(btn btn-sm btn-danger m-2))
   end
 end
