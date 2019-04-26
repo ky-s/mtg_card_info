@@ -1,11 +1,10 @@
-# README
+# MTG Card Info - RailsWebPage
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+MTG SDK を使用して、MTGカード情報を取得して表示するWebアプリケーションです。
+カード情報をDBに保存したり、 カード画像をActive Storageを使用して保存することもできます。
 
 * Ruby version
+2.5.0
 
 * System dependencies
 
