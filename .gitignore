@@ -26,8 +26,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-
-
 # Ignore bundler gems.
 vendor/bundle
 
@@ -43,3 +41,5 @@ doc/
 .DS_Store
 .idea
 .secret
+
+/app/assets/images/background/

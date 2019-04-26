@@ -9,4 +9,8 @@ class MtgCard < ApplicationRecord
     number.to_i <=> other.number.to_i
     # number.match(/(\d+)(\w+)/)[1..2] <=> other.number.match(/(\d+)(\w+)/)[1..2]
   end
+
+  def image_src
+    image.attached? ? image : img_url
+  end
 end

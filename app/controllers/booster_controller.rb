@@ -2,7 +2,7 @@ class BoosterController < ApplicationController
   before_action :load_set
 
   def show
-    @cards = GenerateBooster.new(@set).generate
+    @cards = GenerateBooster.new(@set).bulk_generate(params.fetch(:num, 1).to_i)
   end
 
   private

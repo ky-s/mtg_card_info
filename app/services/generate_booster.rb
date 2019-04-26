@@ -18,7 +18,16 @@ class GenerateBooster
     end
   end
 
+  def bulk_generate(n)
+    n.times.each_with_object([]) { |_i, cards| cards.concat(generate) }
+      .sort
+      .group_by(&:rarity)
+      .values_at('Mythic Rare', 'Mythic', 'Rare', 'Uncommon', 'Common').flatten.compact
+  end
+
   def select_cards(potential_rarity, n)
+    potential_rarity = Array(potential_rarity).map { |rarity| rarity.gsub('foil ', '') }
+    puts potential_rarity
     if potential_rarity == %w(rare mythic\ rare)
       rares_or_mythic_rares(n)
     else
@@ -27,8 +36,10 @@ class GenerateBooster
   end
 
   def rares_or_mythic_rares(n)
+    rarity = 'rare'
+    rarity = ['mythic rare', 'mythic'] if Random::rand(1..8) == 1
     n.times.map do
-      MtgCard.where(set: @set.code, rarity: %w(mythic\ rare rare rare rare rare rare rare rare).sample).sample
+      MtgCard.where(set: @set.code, rarity: rarity).sample
     end
   end
 end

@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <% @sets_by_types.keys.take(8).each do |type| %>
+      <% @sets_by_types.keys.take(9).each do |type| %>
         <li class="nav-item active">
           <%= link_to type, "##{type}", class: 'nav-link mx-2' %>
         </li>
@@ -15,7 +15,7 @@
           Others
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <% @sets_by_types.keys.drop(8).each do |type| %>
+          <% @sets_by_types.keys.drop(9).each do |type| %>
             <%= link_to type, "##{type}", class: 'dropdown-item' %>
           <% end %>
         </div>
@@ -32,11 +32,7 @@
 <script>
   <%= render partial: 'shared/rumblize.js', locals: { selector: '.get_booster' } %>
   $('.fetch > a:enabled, .fetch_image > a:enabled').on('click', function() {
-    $(this).animate(
-      {height: "toggle", opacity: "toggle"},
-      "slow"
-    );
-    $.LoadingOverlay('show');
+    $('div#progress-div').show();
   });
 </script>
 

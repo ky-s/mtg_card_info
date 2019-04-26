@@ -8,7 +8,5 @@
   </ul>
 </nav>
 
-<% @cards.each do |card| %>
-  <%= link_to image_tag((card.image.attached? ? card.image : card.img_url), class: 'm-4'), card.img_url, { data: { lightbox: "card", title: card.title_label }, class: "mtg_card #{card.rarity.split.join}" } %>
-<% end %>
+<%= cards_view(@cards) %>
 

@@ -12,6 +12,14 @@ class MTG::Card
   end
 
   def title_label
-    "#{jp_name} (#{rarity})"
+    "#{jp_name} (#{rarity}) [#{number}]"
+  end
+
+  def <=>(other)
+    number.to_i <=> other.number.to_i
+  end
+
+  def image_src
+    img_url
   end
 end
